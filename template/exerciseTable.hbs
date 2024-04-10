@@ -1,0 +1,39 @@
+<div class="mt-9">
+    <div class="bord border-b-2 border-blue" style="border-bottom-width: 1px;">
+      <div class="flex justify-between">
+        <div style="flex: 1" class="py-3 font-semibold">
+            Nazwa ćwiczenia
+        </div>
+        <div style="width: 21%" class="border-l-2 border-blue text-center py-3 font-semibold" style="border-left-width: 1px;">
+            Data
+        </div>
+        <div style="width: 21%" class="border-l-2 border-blue text-center py-3 font-semibold" style="border-left-width: 1px;">
+            Wynik*
+        </div>
+      </div>
+    </div>
+    {{#each exercises}}
+        <div class="border-b-2 border-blue" style="border-bottom-width: 1px;">
+            <div class="flex justify-between">
+                <div style="flex: 1" class="py-4 flex items-center">
+                    <div class="rounded-md overflow-hidden">
+                        <img src="https://media.self.com/photos/57d88cd0d3276fe2329464df/4:3/w_2240,c_limit/workouts-for-busy-people-feat.jpg" width="100" height="40" />
+                    </div>
+                    <div class="ml-4">
+                        {{name}}
+                    </div>
+                </div>
+                <div style="width: 21%" class="border-l-2 border-blue text-center py-3 items-center flex justify-center" style="border-left-width: 1px;">
+                    <div>
+                        {{date}}
+                    </div>
+                </div>
+                <div style="width: 21%" class="border-l-2 border-blue text-center py-3 items-center flex justify-center" style="border-left-width: 1px;">
+                    <div>
+                        {{result}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

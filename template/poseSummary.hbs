@@ -1,0 +1,56 @@
+<div>
+  <div class="mt-10 flex">
+    <img src="https://app-dev.physiostretch.app/images/squat.png" width="55" height="55" />
+    <div class="flex flex-col justify-center ml-3">
+      <div class="font-semibold">
+        Przysiad
+      </div>
+      <div>
+        <span>Kąt w biodrze:</span>
+        <span class="text-blue">{{analysis.squat.hipAngle}}</span>
+      </div>
+      <div>
+        <span>Kąt w kolanie:</span>
+        <span class="text-blue">{{analysis.squat.kneeAngle}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 flex">
+    <img src="https://app-dev.physiostretch.app/images/fold.png" width="55" height="55" />
+    <div class="flex flex-col justify-center ml-3">
+      <div class="font-semibold">
+        Skłon
+      </div>
+      <div>
+        <span>Kąt w biodrze:</span>
+        <span class="text-blue">{{analysis.fold.hipAngle}}</span>
+      </div>
+      <div>
+        <span>Ogległość dłoni od ziemi:</span>
+        <span class="text-blue">{{analysis.fold.groundDistance}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 flex items-center">
+    <div>
+      <img src="https://app-dev.physiostretch.app/images/lunge.png" width="55" height="40" />
+    </div>
+    <div class="flex flex-col justify-center ml-3">
+      <div class="font-semibold">
+        Wypad
+      </div>
+      <div>
+        <span>Kąt w biodrze:</span>
+        <span class="text-blue">{{analysis.lunge.hipAngle}}</span>
+      </div>
+      <div>
+        <span>Ogległość dłoni od ziemi:</span>
+        <span class="text-blue">{{analysis.lunge.groundDistance}}</span>
+      </div>
+      <div>
+        <span>Proste plecy:</span>
+        <span class="text-blue">{{analysis.lunge.straightBack}}</span>
+      </div>
+    </div>
+  </div>
+</div>

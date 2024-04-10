@@ -1,31 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            blue: 'yellow',
-          }
-        },
-        fontFamily: {
-          'body': ['"Poppins"']
-        }
-      }
-    }
-  </script>
-</head>
-<body style="font-family: Poppins;">
-    <div class="flex justify-center align-center mt-5">
-      <img src="https://app-dev.physiostretch.app/images/physioStretchLogo.png" width="300" height="300" />
-    </div>
-      <h1>dsfsdfsdfs</h1>
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+         html {
+         -webkit-print-color-adjust: exact;
+         }
+      </style>
+      <script>
+         tailwind.config = {
+           theme: {
+             extend: {
+               colors: {
+                 blue: '#a1def9',
+                 lightBlue: '#eff9fe'
+               }
+             },
+             fontFamily: {
+               'body': ['"Poppins"']
+             }
+           }
+         }
+      </script>
+   </head>
+   <body style="font-family: Poppins;">
+      <div class="flex justify-center align-center mt-5">
+         <img src="https://app-dev.physiostretch.app/images/physioStretchLogo.png" width="300" height="300" />
+      </div>
+      <div style="margin: 20px 60px">
+         <h1 class="text-center text-4xl  font-medium mt-5">RAPORT TRENINGÓW</h1>
+         <div class="flex justify-between mt-5">
+            <div class="flex text-xl">
+               <div class="font-semibold">
+                  Zakres rapotu:&nbsp;
+               </div>
+               <div>
+                  {{reportForm}}-{{reportTo}}
+               </div>
+            </div>
+            <div>
+               {{name}}
+            </div>
+         </div>
+         <div class="mt-9">
+            <div class="bord border-b-2 border-blue" style="border-bottom-width: 1px;">
+               <div class="flex justify-between">
+                  <div class="py-3">
+                     Ilość zrobionych ćwiczeń z programu treningowego:
+                  </div>
+                  <div class="w-1/6 border-l-2 border-blue text-center py-3" style="border-left-width: 1px;">
+                     {{trainingProgramExercisesCount}}
+                  </div>
+               </div>
+            </div>
+            <div class="bord border-b-2 border-blue" style="border-bottom-width: 1px;">
+               <div class="flex justify-between">
+                  <div class="py-3">
+                     Ilość zrobionych treningów dodatkowych z kursów:
+                  </div>
+                  <div class="w-1/6 border-l-2 border-blue text-center py-3" style="border-left-width: 1px;">
+                     {{otherExercisesCount}}
+                  </div>
+               </div>
+            </div>
+            <div>
+               <div class="flex justify-between">
+                  <div class="py-3">
+                     Łączny czas spędzony w aplikacji:
+                  </div>
+                  <div class="w-1/6 border-l-2 border-blue text-center py-3" style="border-left-width: 1px;">
+                     {{timeSpent}} min
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="mt-7">
+            <div class="text-xl font-semibold text-center">Wynik analizy mobilności</div>
+            <div class="flex justify-between mt-4">
+               <div class="w-1/2">
+                  <div class="font-semibold">Pierwszy wynik</div>
+                  <div>{{firstAnalyses.date}}</div>
+                  <div>
+                     <div class="mt-4 mr-3 rounded-xl p-4 bg-lightBlue">
+                        <div class="flex justify-between">
+                           <div class="w-1/2">
+                              <div class="font-semibold">Ogólny wynik</div>
+                              <div class="flex">
+                                 <div class="text-7xl font-semibold round bg-white p-4 rounded-full mt-3">
+                                    {{firstAnalyses.overallPoints}}
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="w-1/2">
+                              <div class="flex justify-between text-sm flex-wrap">
+                                 <div class="w-1/2">
+                                    <div class="font-semibold text-center text-xs">Postawa</div>
+                                    <div class="flex justify-center">
+                                       <div class="text-xl font-semibold round bg-white p-2 rounded-full mt-1 text-center" style="width: 45px;">
+                                          {{firstAnalyses.posture}}
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="w-1/2">
+                                    <div class="font-semibold text-center text-xs">Ruchomość</div>
+                                    <div class="flex justify-center">
+                                       <div class="text-xl font-semibold round bg-white p-2 rounded-full mt-1 text-center" style="width: 45px;">
+                                          {{firstAnalyses.mobility}}
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="w-1/2 mt-2">
+                                    <div class="font-semibold text-center text-xs">Stabilność</div>
+                                    <div class="flex justify-center">
+                                       <div class="text-xl font-semibold round bg-white p-2 rounded-full mt-1 text-center" style="width: 45px;">
+                                          {{firstAnalyses.stability}}
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="w-1/2 mt-2">
+                                    <div class="font-semibold text-center text-xs">Elastyczność</div>
+                                    <div class="flex justify-center">
+                                       <div class="text-xl font-semibold round bg-white p-2 rounded-full mt-1 text-center" style="width: 45px;">
+                                          {{firstAnalyses.flexibility}}
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mt-10 flex">
+                    <img src="https://app-dev.physiostretch.app/images/squat.png" width="55" height="55" />
+                    <div class="flex flex-col justify-center ml-3">
+                      <div class="font-semibold">
+                        Przysiad
+                      </div>
+                      <div>
+                        <span>Kąt w biodrze:</span>
+                        <span class="text-blue">68°</span>
+                      </div>
+                      <div>
+                        <span>Kąt w kolanie:</span>
+                        <span class="text-blue">68°</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-8 flex">
+                    <img src="https://app-dev.physiostretch.app/images/fold.png" width="55" height="55" />
+                    <div class="flex flex-col justify-center ml-3">
+                      <div class="font-semibold">
+                        Skłon
+                      </div>
+                      <div>
+                        <span>Kąt w biodrze:</span>
+                        <span class="text-blue">68°</span>
+                      </div>
+                      <div>
+                        <span>Ogległość dłoni od ziemi:</span>
+                        <span class="text-blue">46 cm</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-8 flex">
+                    <img src="https://app-dev.physiostretch.app/images/lunge.png" width="55" height="55" />
+                    <div class="flex flex-col justify-center ml-3">
+                      <div class="font-semibold">
+                        Wypad
+                      </div>
+                      <div>
+                        <span>Kąt w biodrze:</span>
+                        <span class="text-blue">68°</span>
+                      </div>
+                      <div>
+                        <span>Ogległość dłoni od ziemi:</span>
+                        <span class="text-blue">46 cm</span>
+                      </div>
+                      <div>
+                        <span>Proste plecy:</span>
+                        <span class="text-blue">TAK</span>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+               <div class="w-1/2">
+                  <div class="font-semibold">Ostatni wynik</div>
+                  <div>{{lastAnalyses.date}}</div>
+                  <div>
+                     <div class="mt-4 mr-3 rounded-xl p-4 bg-lightBlue">
+                        <div class="flex justify-between">
+                           <div class="w-1/2">
+                              <div class="font-semibold">Ogólny wynik</div>
+                              <div class="flex">
+                                 <div class="text-7xl font-semibold round bg-white p-4 rounded-full mt-3">
+                                    {{lastAnalyses.overallPoints}}
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="w-1/2">
+                              <div class="flex justify-between text-sm flex-wrap">
+                                 <div class="w-1/2">
+                                    <div class="font-semibold text-center text-xs">Postawa</div>
+                                    <div class="flex justify-center">
+                                       <div class="text-xl font-semibold round bg-white p-2 rounded-full mt-1 text-center" style="width: 45px;">
+                                          {{lastAnalyses.posture}}
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="w-1/2">
+                                    <div class="font-semibold text-center text-xs">Ruchomość</div>
+                                    <div class="flex justify-center">
+                                       <div class="text-xl font-semibold round bg-white p-2 rounded-full mt-1 text-center" style="width: 45px;">
+                                          {{lastAnalyses.mobility}}
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="w-1/2 mt-2">
+                                    <div class="font-semibold text-center text-xs">Stabilność</div>
+                                    <div class="flex justify-center">
+                                       <div class="text-xl font-semibold round bg-white p-2 rounded-full mt-1 text-center" style="width: 45px;">
+                                          {{lastAnalyses.stability}}
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="w-1/2 mt-2">
+                                    <div class="font-semibold text-center text-xs">Elastyczność</div>
+                                    <div class="flex justify-center">
+                                       <div class="text-xl font-semibold round bg-white p-2 rounded-full mt-1 text-center" style="width: 45px;">
+                                          {{lastAnalyses.flexibility}}
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div>
+                    <img src="https://app-dev.physiostretch.app/images/squat.png" width="300" height="300" />
+                  </div>
+                  <div>123</div>
+                  <div>123</div>
+                  <div>123</div>
+                  <div>123</div>
+                  <div>123</div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+   </body>
 </html>

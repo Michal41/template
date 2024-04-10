@@ -1,0 +1,34 @@
+<div class="mt-9">
+    <div class="bord border-b-2 border-blue" style="border-bottom-width: 1px;">
+      <div class="flex justify-between">
+        <div style="flex: 1" class="py-3 font-semibold">
+            Nazwa kursu
+        </div>
+        <div style="width: 21%" class="border-l-2 border-blue text-center py-3 font-semibold" style="border-left-width: 1px;">
+            Data
+        </div>
+        <div style="width: 21%" class="border-l-2 border-blue text-center py-3 font-semibold" style="border-left-width: 1px;">
+            Wynik*
+        </div>
+      </div>
+    </div>
+    {{#each courses}}
+        <div class="border-b-2 border-blue" style="border-bottom-width: 1px;">
+            <div class="flex justify-between">
+                <div style="flex: 1" class="py-4 flex items-center">
+                    {{name}}
+                </div>
+                <div style="width: 21%" class="border-l-2 border-blue text-center py-3 items-center flex justify-center" style="border-left-width: 1px;">
+                    <div>
+                        {{date}}
+                    </div>
+                </div>
+                <div style="width: 21%" class="border-l-2 border-blue text-center py-3 items-center flex justify-center" style="border-left-width: 1px;">
+                    <div>
+                        {{result}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+         html {
+         -webkit-print-color-adjust: exact;
+         }
+      </style>
+      <script>
+         tailwind.config = {
+           theme: {
+             extend: {
+               colors: {
+                 blue: '#a1def9',
+                 lightBlue: '#eff9fe'
+               }
+             },
+             fontFamily: {
+               'body': ['"Poppins"']
+             }
+           }
+         }
+      </script>
+   </head>
+   <body style="font-family: Poppins;">
+      <div class="flex justify-center align-center mt-5">
+         <img src="https://app-dev.physiostretch.app/images/physioStretchLogo.png" width="300" height="300" />
+      </div>
+      <div style="margin: 20px 60px">
+         <h1 class="text-center text-4xl  font-medium mt-5">RAPORT TRENINGÓW</h1>
+         <div class="flex justify-between mt-5">
+            <div class="flex text-xl">
+               <div class="font-semibold">
+                  Zakres rapotu:&nbsp;
+               </div>
+               <div>
+                  {{reportFrom}}-{{reportTo}}
+               </div>
+            </div>
+            <div>
+               {{name}}
+            </div>
+         </div>
+         {{> table }}
+         <div class="mt-7">
+            <div class="text-xl font-semibold text-center">Wynik analizy mobilności</div>
+            <div class="flex justify-between mt-4">
+               <div class="w-1/2">
+                  <div class="font-semibold">Pierwszy wynik</div>
+                  <div>{{firstAnalyses.date}}</div>
+                  <div>
+                     {{> mobilityAnalysis analysis=firstAnalyses }}
+                  </div>
+                     {{> poseSummary analysis=firstAnalyses }}
+                  </div>
+               <div class="w-1/2">
+                  <div class="font-semibold">Ostatni wynik</div>
+                  <div>{{lastAnalyses.date}}</div>
+                  <div>
+                     {{> mobilityAnalysis analysis=lastAnalyses }}
+                  </div>
+                  <div>
+                     {{> poseSummary analysis=lastAnalyses }}
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         {{#if exercises.length }}
+            <div style="page-break-before: always;"></div>
+            <div style="height: 100vh;" class="flex flex-col justify-between">
+               <div>
+                  <div class="flex justify-between items-center text-3xl  font-semibold mt-12">
+                     <div>
+                        Historia Ćwiczeń
+                     </div>
+                     <div>
+                        <img src="https://app-dev.physiostretch.app/images/physioStretchLogo.png" width="300" height="300" />
+                     </div>
+                  </div>
+
+                  {{> exerciseTable }}
+               </div>
+               <div class="mb-12">
+                  *% czasu podczas treningu, w którym użytkownik utrzymał poprawną postawę ciała zgodną z kryteriami wzorca ćwiczenia
+               </div>
+            </div>
+         {{/if}}
+
+         {{#if courses.length }}
+            <div style="page-break-before: always;"></div>
+            <div style="height: 100vh;" class="flex flex-col justify-between">
+               <div>
+                  <div class="flex justify-between items-center text-3xl  font-semibold mt-12">
+                     <div>
+                        Historia Kursów
+                     </div>
+                     <div>
+                        <img src="https://app-dev.physiostretch.app/images/physioStretchLogo.png" width="300" height="300" />
+                     </div>
+                  </div>
+
+                  {{> coursesTable }}
+               </div>
+               <div class="mb-12">
+                  *% czasu podczas treningu, w którym użytkownik utrzymał poprawną postawę ciała zgodną z kryteriami wzorca ćwiczenia
+               </div>
+            </div>
+         {{/if}}
+        </div>
+      </div>
+   </body>
+</html>
